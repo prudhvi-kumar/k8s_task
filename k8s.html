@@ -1,0 +1,210 @@
+Code present in /var/www/html/
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<button><a href="#history" >history</a></button>
+
+<button id="amigo" ; onmouseover="lw1()"; onclick="kw()" ; onmouseout="lw2()">kubectl version</button>
+<button id="amig" ; onmouseover="lw3()" ; onclick="kw()"; onmouseout="lw2()">kubectl get pods</button>
+<button id="ami" ; onmouseover="lw4()" ; onclick="kw()"; onmouseout="lw2()">launching pod</button>
+<button id="am" ; onmouseover="lw5()" ; onclick="kw()"; onmouseout="lw2()">exposing services</button>
+<button id="a" ; onmouseover="lw6()"; onclick="kw()"; onmouseout="lw2()">scaling in k8s</button>
+
+        <script>
+
+                function lw1() {
+                            document.getElementById('it').value="kubectl version"
+                }
+function lw3() {
+            document.getElementById('it').value="kubectl get pods" ;
+}
+function lw4() {
+            document.getElementById('it').value="kubectl create deployment k8s --image = vimal13/apache-webserver-php" ;
+}
+function lw5() {
+            document.getElementById('it').value="kubectl expose deployment k8s --port = 80 --type = NodePort" ;
+}
+function lw6() {
+            document.getElementById('it').value="kubectl scale deployment k8s --replicas = 6" ;
+}
+
+
+
+
+function lw2() {
+            document.getElementById('it').value="";
+
+}
+        </script>
+<style>
+button {
+            top:50px;
+                width:100px;
+                    background:conic-gradient(navy,cyan);
+                        color:white;
+                            font-weight:bold;
+                                padding:10px 10px;
+                                    box-shadow:0 5px dimgrey;
+                                        border:1px solid black;
+                                            border-radius:20px;
+                                                text-decoration:none;
+                                                    margin:5px;
+}
+                button:hover {
+                            box-shadow:0 5px black;
+                                color:black;
+                }
+</style>
+
+
+
+
+        <script>
+
+
+                function kw() {
+                        var i = document.getElementById('it').value
+                        document.getElementById("history").innerHTML +="<br>"
+                        document.getElementById("history").innerHTML += i;
+                        var req = new XMLHttpRequest();
+                        req.open("GET","http://192.168.43.52/cgi-bin/k8s.py?x="+i,true);
+                        req.send();
+
+                        req.onload = function () {
+                                                        var result = req.responseText;
+                                                        document.getElementById("d1").innerHTML = result;
+
+                        }
+
+                        document.getElementById('it').value=""
+                }
+        </script>
+
+<style>
+    div#srav {
+                position:relative;
+                    top:80px;
+                        border:5px solid cornflowerblue;
+                            margin:auto;
+                                height: 2200px;
+                                    width: 1500px;
+                                        background:black;
+                                            color:white;
+                                                border-radius: 20px;
+                                                    font-weight:bold;
+    }
+
+    div#kal {
+                border:3px solid lightgrey;
+                    color:darkblue);
+                top:3px;
+                    margin:auto;
+                        height:40px;
+                            width: 798px;
+                                border-radius:20px 20px 0px 0px;
+                                    font-size: 30px ;
+                                        font-weight: bold;
+                                            font-family: cursive;
+    }
+
+    div#history {
+                border:3px solid turquoise;
+                    border-radius:20px;
+                        height:400px;
+                            width:250px;
+                                background:black;
+                                    color: cornflowerblue;
+                                        text-decoration:underline;
+                                            font-weight:bold;
+                                                margin:5px;
+                                                    display:inline-block;
+
+    }
+
+    div#decor {
+                top:700px;
+                    color:crimson;
+                        text-decoration:underline;
+                            height:50px;
+                                border-radius:20px;
+                                    text-align:center;
+                                        font-size:50px;
+    }
+
+    a {
+                text-decoration:none;
+                    color:white;
+                        height:45px;
+                            width:85px;
+                                border-radius:20px;
+
+    }
+
+    div#list {
+                text-decoration:none;
+                    float:left;
+                        background:skyblue;
+                            color:white;
+                                height:45px;
+                                    width:85px;
+                                        border-radius:20px;
+    }
+    input {
+                background:black;
+                    color:ivory;
+    }
+    button#des {
+                margin:50px 0px 0px 100px;
+    }
+
+    body{
+
+            background-image: conic-gradient(tomato,navy,deepskyblue,red,dodgerblue,cornflowerblue,cyan,orange,skyblue,brown,cornflowerblue , cyan);
+    }
+</style>
+<div id="srav">
+          <div id="kal" >Command Terminal</div>
+             <br/>
+                <br/>
+                  <p style="color:cyan; display:inline" >[root@localhost ~]#</p> <input id="it" size="80px" />
+
+
+        <script>
+                var wage = document.getElementById("it");
+wage.addEventListener("keydown", function (e) {
+            if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
+                            kw();
+                        }
+});
+        </script>
+
+
+
+
+                </br>
+                <pre>
+                <div id="d1">>>></div>
+                </pre>
+
+
+</div>
+
+<pre>
+
+
+
+
+
+
+</pre>
+
+
+<div id="decor">
+        HISTORY
+</div>
+
+<div id="history">
+
+         <b>...log...</b>
+</div>
+<button id='des'><a href="#amigo" >Back To Top</a></button>
